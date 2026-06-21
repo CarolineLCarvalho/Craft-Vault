@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom"
+
 function GameCard({
   game,
-  removeGame
+  removeGame,
+  index
 }) {
   return (
     <div className="card">
@@ -16,15 +19,25 @@ function GameCard({
 
       <span>{game.status}</span>
 
-      {/* BOTÃO */}
-      <button
-  className="delete-button"
-  onClick={() =>
-    removeGame(game.id)
-  }
+      <div className="card-actions">
+
+  <Link
+    to={`/editar/${game.id}`}
+    className="edit-button"
+  >
+    Editar
+  </Link>
+
+  <button
+    className="delete-button"
+    onClick={() =>
+      removeGame(game.id)
+    }
   >
     Remover
-   </button>
+  </button>
+
+</div>
 
     </div>
   )

@@ -1,11 +1,46 @@
 {
   "games": [
     {
+      "nome": "Red Dead Redemption 2",
+      "genero": "Action",
+      "imagem": "https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg",
+      "status": "Jogando",
+      "id": "u9t5AJR_uaE"
+    },
+    {
+      "nome": "Grand Theft Auto V",
+      "genero": "Action",
+      "imagem": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
+      "status": "Zerado",
+      "id": "9BSoAYovsio"
+    },
+    {
       "nome": "Limbo",
       "genero": "Action",
       "imagem": "https://media.rawg.io/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg",
       "status": "Wishlist",
-      "id": "u9t5AJR_uaE"
+      "id": "eTN-mPm48CQ"
+    },
+    {
+      "nome": "Fallout 4",
+      "genero": "Action",
+      "imagem": "https://media.rawg.io/media/games/d82/d82990b9c67ba0d2d09d4e6fa88885a7.jpg",
+      "status": "Jogando",
+      "id": "98v52crxYaQ"
+    },
+    {
+      "nome": "Life is Strange",
+      "genero": "Adventure",
+      "imagem": "https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg",
+      "status": "Zerado",
+      "id": "SxwMGgCGZS0"
+    },
+    {
+      "nome": "Counter-Strike: Global Offensive",
+      "genero": "Shooter",
+      "imagem": "https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
+      "status": "Jogando",
+      "id": "cDOd6qQPV5s"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

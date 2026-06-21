@@ -143,7 +143,6 @@ function Cadastro() {
             name="nome"
             value={formData.nome}
             onChange={handleGameSelect}
-            required
           >
 
             <option value="">

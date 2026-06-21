@@ -349,3 +349,72 @@ body {
 
   box-shadow: none;
 }
+.card-actions {
+  display: flex;
+
+  gap: 12px;
+
+  padding: 20px;
+}
+
+.edit-button,
+.delete-button {
+  flex: 1;
+
+  padding: 14px;
+
+  text-align: center;
+  text-decoration: none;
+
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+
+  color: white;
+
+  border: none;
+
+  cursor: pointer;
+
+  text-shadow:
+    2px 2px 0 #000;
+
+  transition: 0.15s;
+}
+
+/* EDITAR */
+
+.edit-button {
+  background:
+    linear-gradient(
+      to bottom,
+      #5eff6c,
+      #2d9d3a
+    );
+
+  box-shadow:
+    0 6px 0 #1b5e20;
+}
+
+.edit-button:hover {
+  filter: brightness(1.1);
+}
+
+/* REMOVER */
+
+.delete-button {
+  background:
+    linear-gradient(
+      to bottom,
+      #ff595e,
+      #c1121f
+    );
+
+  box-shadow:
+    0 6px 0 #780000;
+
+  margin: 0;
+}
+
+.delete-button:hover {
+  filter: brightness(1.1);
+}
