@@ -10,13 +10,11 @@ function GameList({
       {games.map((game, index) => (
 
         <GameCard
-          key={index}
+          key={game.id}
 
           game={game}
-          
           removeGame={removeGame}
 
-          index={index}
         />
 
       ))}

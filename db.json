@@ -1,0 +1,12 @@
+{
+  "games": [
+    {
+      "nome": "Limbo",
+      "genero": "Action",
+      "imagem": "https://media.rawg.io/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg",
+      "status": "Wishlist",
+      "id": "u9t5AJR_uaE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

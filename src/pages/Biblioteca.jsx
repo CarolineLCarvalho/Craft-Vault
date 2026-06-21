@@ -1,43 +1,43 @@
 import { useEffect, useState } from "react"
-
 import { Link } from "react-router-dom"
 
 import Header from "../components/Header"
 import GameList from "../components/GameList"
 
+import {
+  getGames,
+  deleteGame
+} from "../api/gameService"
+
 function Biblioteca() {
   const [games, setGames] = useState([])
 
   useEffect(() => {
-    const jogosSalvos =
-      JSON.parse(localStorage.getItem("games"))
-      || []
+    loadGames()
+  }, [])
 
-    const ordenados = jogosSalvos.sort(
+  async function loadGames() {
+    const data = await getGames()
+
+    const ordenados = data.sort(
       (a, b) =>
         a.nome.localeCompare(b.nome)
     )
 
     setGames(ordenados)
-  }, [])
+  }
 
-  // FUNÇÃO DE REMOVER O JOGOOOOOO
-  function removeGame(indexToRemove) {
+  async function removeGame(id) {
 
-    // cria novo array sem o item clicado
-    const updatedGames = games.filter(
-      (_, index) =>
-        index !== indexToRemove
+    const confirmar = window.confirm(
+      "Deseja remover este jogo?"
     )
 
-    // atualiza state
-    setGames(updatedGames)
+    if (!confirmar) return
 
-    // atualiza localStorage
-    localStorage.setItem(
-      "games",
-      JSON.stringify(updatedGames)
-    )
+    await deleteGame(id)
+
+    loadGames()
   }
 
   return (
@@ -57,7 +57,6 @@ function Biblioteca() {
           </Link>
         </div>
 
-        {/* ENVIA removeGame VIA PROP */}
         <GameList
           games={games}
           removeGame={removeGame}

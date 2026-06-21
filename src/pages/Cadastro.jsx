@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react"
 
-import { useNavigate } from "react-router-dom"
+import {
+  useNavigate,
+  useParams
+} from "react-router-dom"
 
 import Header from "../components/Header"
+
+import {
+  createGame,
+  getGameById,
+  updateGame
+} from "../api/gameService"
 
 function Cadastro() {
 
   const navigate = useNavigate()
+  const { id } = useParams()
 
-  // jogos vindos da API
   const [gamesApi, setGamesApi] =
     useState([])
 
-  // dados do formulário
   const [formData, setFormData] =
     useState({
       nome: "",
@@ -21,24 +29,37 @@ function Cadastro() {
       status: "Jogando"
     })
 
-  // busca jogos da RAWG
+  // Busca jogos da RAWG
   useEffect(() => {
 
     fetch(
       `https://api.rawg.io/api/games?key=${import.meta.env.VITE_RAWG_KEY}`
     )
-
       .then(response => response.json())
-
       .then(data => {
-
         setGamesApi(data.results)
-
       })
 
   }, [])
 
-  // quando seleciona jogo
+  // Carrega jogo para edição
+  useEffect(() => {
+
+    if (!id) return
+
+    async function loadGame() {
+
+      const game =
+        await getGameById(id)
+
+      setFormData(game)
+    }
+
+    loadGame()
+
+  }, [id])
+
+  // Seleciona jogo da RAWG
   function handleGameSelect(e) {
 
     const selectedGame =
@@ -51,7 +72,8 @@ function Cadastro() {
 
       ...formData,
 
-      nome: selectedGame.name,
+      nome:
+        selectedGame.name,
 
       genero:
         selectedGame.genres[0]?.name
@@ -63,7 +85,7 @@ function Cadastro() {
     })
   }
 
-  // altera status
+  // Atualiza status
   function handleChange(e) {
 
     setFormData({
@@ -76,25 +98,25 @@ function Cadastro() {
     })
   }
 
-  // salva jogo
-  function handleSubmit(e) {
+  // Salva
+  async function handleSubmit(e) {
 
     e.preventDefault()
 
-    const jogosSalvos =
-      JSON.parse(
-        localStorage.getItem("games")
-      ) || []
+    if (id) {
 
-    localStorage.setItem(
-
-      "games",
-
-      JSON.stringify([
-        ...jogosSalvos,
+      await updateGame(
+        id,
         formData
-      ])
-    )
+      )
+
+    } else {
+
+      await createGame(
+        formData
+      )
+
+    }
 
     navigate("/biblioteca")
   }
@@ -112,10 +134,11 @@ function Cadastro() {
         >
 
           <h2>
-            Cadastrar Jogo
+            {id
+              ? "Editar Jogo"
+              : "Cadastrar Jogo"}
           </h2>
 
-          {/* SELECT DOS JOGOS */}
           <select
             name="nome"
             value={formData.nome}
@@ -140,7 +163,6 @@ function Cadastro() {
 
           </select>
 
-          {/* STATUS */}
           <select
             name="status"
             value={formData.status}

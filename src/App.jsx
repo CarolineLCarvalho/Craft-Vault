@@ -11,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route
           path="/"
           element={<Cadastro />}
@@ -20,6 +21,12 @@ function App() {
           path="/biblioteca"
           element={<Biblioteca />}
         />
+
+        <Route
+          path="/editar/:id"
+          element={<Cadastro />}
+        />
+
       </Routes>
     </BrowserRouter>
   )

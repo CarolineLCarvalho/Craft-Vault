@@ -1,7 +1,6 @@
 function GameCard({
   game,
-  removeGame,
-  index
+  removeGame
 }) {
   return (
     <div className="card">
@@ -19,14 +18,13 @@ function GameCard({
 
       {/* BOTÃO */}
       <button
-        className="delete-button"
-
-        onClick={() =>
-          removeGame(index)
-        }
-      >
-        Remover
-      </button>
+  className="delete-button"
+  onClick={() =>
+    removeGame(game.id)
+  }
+  >
+    Remover
+   </button>
 
     </div>
   )
